@@ -4,23 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Football League</title>
+
 <style>
 :root{--bg:#07110d;--panel:#0d1c15;--panel2:#12251b;--line:#234233;--text:#f3f7f4;--muted:#a9b8b0;--accent:#31d17b;--gold:#ffd166;--danger:#ff6b6b}
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(145deg,#06100c,#0a1711 55%,#07100d);color:var(--text)}
 header{position:sticky;top:0;z-index:10;background:rgba(5,14,10,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav{max-width:1200px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.brand{font-weight:900;letter-spacing:.5px;font-size:20px}.brand span{color:var(--accent)}
+.brand{font-weight:900;letter-spacing:.5px;font-size:20px}
+.brand span{color:var(--accent)}
 nav{display:flex;gap:7px;flex-wrap:wrap}
 button,.tab{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:10px 13px;border-radius:10px;cursor:pointer;font-weight:700}
 .tab.active,button.primary{background:var(--accent);color:#06110b;border-color:var(--accent)}
 button:hover,.tab:hover{filter:brightness(1.12)}
 main{max-width:1200px;margin:auto;padding:24px 20px 60px}
-.hero{padding:30px 0 20px}.hero h1{font-size:clamp(32px,6vw,60px);margin:0 0 8px}.hero p{color:var(--muted);margin:0;max-width:700px}
+.hero{padding:30px 0 20px}
+.hero h1{font-size:clamp(32px,6vw,60px);margin:0 0 8px}
+.hero p{color:var(--muted);margin:0;max-width:700px}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:16px;padding:18px}
-.stat{font-size:28px;font-weight:900}.muted{color:var(--muted);font-size:13px}
-.section{margin-top:24px}.section h2{margin:0 0 13px}
+.stat{font-size:28px;font-weight:900}
+.muted{color:var(--muted);font-size:13px}
+.section{margin-top:24px}
+.section h2{margin:0 0 13px}
 .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:15px;background:var(--panel)}
 table{width:100%;border-collapse:collapse;min-width:760px}
 th,td{padding:13px 10px;border-bottom:1px solid #1c3528;text-align:center;font-size:14px}
@@ -28,7 +34,8 @@ th{background:#102118;color:#b8c9c0;position:sticky;top:0}
 td:first-child,th:first-child{text-align:left}
 .team-cell{display:flex;align-items:center;gap:10px}
 .logo{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:900;border:2px solid rgba(255,255,255,.35);color:#fff;flex:none}
-.team-link{font-weight:800;cursor:pointer}.team-link:hover{color:var(--accent)}
+.team-link{font-weight:800;cursor:pointer}
+.team-link:hover{color:var(--accent)}
 .rank{font-weight:900;color:var(--gold)}
 .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
 .controls input,.controls select,.admin-grid input{background:#09160f;color:var(--text);border:1px solid var(--line);padding:10px;border-radius:9px;outline:none}
@@ -44,17 +51,21 @@ td:first-child,th:first-child{text-align:left}
 .profile-logo{width:130px;height:130px;border-radius:28px;display:grid;place-items:center;font-size:35px;font-weight:1000;border:3px solid rgba(255,255,255,.35)}
 .profile h2{margin:0 0 5px;font-size:30px}
 .pill{display:inline-block;border:1px solid var(--line);padding:5px 9px;border-radius:999px;color:var(--muted);margin:4px 5px 0 0;font-size:12px}
-.admin{display:none}.admin.show{display:block}
+.admin{display:none}
+.admin.show{display:block}
 .login{max-width:430px}
 .notice{padding:12px;border:1px solid var(--line);border-radius:10px;color:var(--muted);font-size:13px}
 .admin-row{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr 1fr auto;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+
 footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var(--muted);font-size:12px}
+
 @media(max-width:850px){
 .grid{grid-template-columns:repeat(2,1fr)}
 .fixture-grid{grid-template-columns:1fr}
 .profile{grid-template-columns:1fr}
 .admin-row{grid-template-columns:1fr 1fr}
 }
+
 @media(max-width:520px){
 .grid{grid-template-columns:1fr 1fr}
 .nav{align-items:flex-start;flex-direction:column}
@@ -68,6 +79,7 @@ main{padding:18px 12px 45px}
 
 <header>
 <div class="nav">
+
 <div class="brand">⚽ <span>FOOTBALL</span> LEAGUE</div>
 
 <nav>
@@ -76,12 +88,14 @@ main{padding:18px 12px 45px}
 <button class="tab" data-page="teams">Teams</button>
 <button class="tab" data-page="admin">Admin</button>
 </nav>
+
 </div>
 </header>
 
 <main>
 
 <section id="home" class="page">
+
 <div class="hero">
 <h1>Football League</h1>
 <p>Official league table, team profiles, fixtures and results for the 8-team competition.</p>
@@ -91,8 +105,11 @@ main{padding:18px 12px 45px}
 
 <div class="section">
 <h2>League Table</h2>
+
 <div class="table-wrap">
+
 <table>
+
 <thead>
 <tr>
 <th># Team</th>
@@ -106,19 +123,26 @@ main{padding:18px 12px 45px}
 <th>PTS</th>
 </tr>
 </thead>
+
 <tbody id="tableBody"></tbody>
+
 </table>
+
 </div>
 </div>
+
 </section>
 
+
 <section id="fixtures" class="page" style="display:none">
+
 <div class="hero">
 <h1>Fixtures & Results</h1>
 <p>All league fixtures are scheduled on Wednesdays and Thursdays.</p>
 </div>
 
 <div class="controls">
+
 <input id="fixtureSearch" placeholder="Search team...">
 
 <select id="dateFilter">
@@ -130,25 +154,34 @@ main{padding:18px 12px 45px}
 <option value="upcoming">Upcoming</option>
 <option value="played">Played</option>
 </select>
+
 </div>
 
 <div class="fixture-grid" id="fixtureGrid"></div>
+
 </section>
 
+
 <section id="teams" class="page" style="display:none">
+
 <div class="hero">
 <h1>Teams</h1>
 <p>Tap a team to view its captain, colours and current record.</p>
 </div>
 
 <div class="grid" id="teamCards"></div>
+
 </section>
 
+
 <section id="profile" class="page" style="display:none">
+
 <button onclick="showPage('teams')">← Back to teams</button>
 
 <div class="card section" id="profileBox"></div>
+
 </section>
+
 
 <section id="admin" class="page admin">
 
@@ -157,7 +190,9 @@ main{padding:18px 12px 45px}
 <p>Update match results. The league table recalculates automatically.</p>
 </div>
 
+
 <div id="loginBox" class="card login">
+
 <h3>Admin access</h3>
 
 <input
@@ -167,10 +202,17 @@ placeholder="Enter admin password"
 style="width:100%;margin:8px 0 10px"
 >
 
-<button class="primary" onclick="login()">Unlock</button>
+<button
+class="primary"
+id="unlockBtn"
+type="button">
+Unlock
+</button>
 
 <p id="loginMsg" class="muted"></p>
+
 </div>
+
 
 <div id="adminPanel" style="display:none">
 
@@ -182,17 +224,21 @@ Results are stored locally in this browser.
 <div class="section" id="adminMatches"></div>
 
 </div>
+
 </section>
 
 </main>
+
 
 <footer>
 Football League • 8 teams • 2026 season
 </footer>
 
+
 <script>
 
 const ADMIN_PASSWORD = "Football2026";
+
 
 const teams = [
 
@@ -236,7 +282,7 @@ const rounds = [
 ];
 
 
-// One match per Wednesday/Thursday.
+// Current fixture dates.
 
 const dates = [
 
@@ -257,8 +303,10 @@ const dates = [
 
 ];
 
+
 let matches = [];
 let mi = 1;
+
 
 rounds.forEach((r,ri)=>{
 
@@ -286,6 +334,7 @@ ag:null
 const saved =
 JSON.parse(localStorage.getItem('leagueResults') || '{}');
 
+
 matches.forEach(m=>{
 
 if(saved[m.id]){
@@ -299,6 +348,7 @@ m.ag=saved[m.id][1];
 
 
 const team = id => teams.find(t=>t.id===id);
+
 
 const logo = (t,cls='logo') =>
 
@@ -341,6 +391,7 @@ h.ga += Number(m.ag);
 a.gf += Number(m.ag);
 a.ga += Number(m.hg);
 
+
 if(Number(m.hg)>Number(m.ag)){
 
 h.w++;
@@ -368,6 +419,7 @@ a.pts++;
 }
 
 });
+
 
 return s;
 
@@ -401,6 +453,7 @@ a.name.localeCompare(b.name)
 function renderTable(){
 
 const rows=standings();
+
 
 document.getElementById('tableBody').innerHTML =
 
@@ -534,6 +587,7 @@ const a=team(m.away);
 
 const played=m.hg!==null;
 
+
 return `
 
 <div class="fixture">
@@ -584,6 +638,7 @@ document.getElementById('teamCards').innerHTML =
 teams.map(t=>{
 
 const s=stats()[t.id];
+
 
 return `
 
@@ -640,6 +695,7 @@ const t=team(id);
 const s=stats()[id];
 
 showPage('profile');
+
 
 document.getElementById('profileBox').innerHTML = `
 
@@ -759,6 +815,7 @@ m.ag=Number(a);
 
 saved[id]=[m.hg,m.ag];
 
+
 localStorage.setItem(
 'leagueResults',
 JSON.stringify(saved)
@@ -772,24 +829,33 @@ alert('Result saved.');
 }
 
 
+/* FIXED ADMIN LOGIN */
+
 function login(){
 
-const password =
-document.getElementById('password').value;
+const passwordInput =
+document.getElementById('password');
+
+const loginBox =
+document.getElementById('loginBox');
+
+const adminPanel =
+document.getElementById('adminPanel');
 
 const msg =
 document.getElementById('loginMsg');
+
+const password =
+passwordInput.value.trim();
 
 
 if(password === ADMIN_PASSWORD){
 
 sessionStorage.setItem('admin','1');
 
-document.getElementById('loginBox')
-.style.display='none';
+loginBox.style.display='none';
 
-document.getElementById('adminPanel')
-.style.display='block';
+adminPanel.style.display='block';
 
 msg.textContent='';
 
@@ -801,6 +867,8 @@ else{
 
 msg.textContent='Incorrect password.';
 
+passwordInput.focus();
+
 }
 
 }
@@ -810,6 +878,7 @@ function showPage(page){
 
 document.querySelectorAll('.page')
 .forEach(x=>x.style.display='none');
+
 
 document.getElementById(page)
 .style.display='block';
@@ -862,11 +931,30 @@ document.getElementById('statusFilter')
 .onchange=renderFixtures;
 
 
+/* FIXED UNLOCK BUTTON */
+
+document.getElementById('unlockBtn')
+.addEventListener('click',login);
+
+
+/* PRESS ENTER TO UNLOCK */
+
+document.getElementById('password')
+.addEventListener('keydown',function(e){
+
+if(e.key==='Enter'){
+login();
+}
+
+});
+
+
 function renderAll(){
 
 renderTable();
 renderFixtures();
 renderTeams();
+
 
 if(sessionStorage.getItem('admin')==='1')
 renderAdmin();
@@ -893,4 +981,4 @@ renderAll();
 </script>
 
 </body>
-</html>
+  </html>
