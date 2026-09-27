@@ -2,338 +2,64 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Football League</title>
-
 <style>
-:root{
---bg:#07110d;--panel:#0d1c15;--panel2:#12251b;
---line:#234233;--text:#f3f7f4;--muted:#a9b8b0;
---accent:#31d17b;--gold:#ffd166;
-}
-
+:root{--bg:#07110d;--panel:#0d1c15;--panel2:#12251b;--line:#234233;--text:#f3f7f4;--muted:#a9b8b0;--accent:#31d17b;--gold:#ffd166;--danger:#ff6b6b}
 *{box-sizing:border-box}
-
-body{
-margin:0;
-font-family:Inter,system-ui,Arial,sans-serif;
-background:linear-gradient(145deg,#06100c,#0a1711 55%,#07100d);
-color:var(--text)
-}
-
-header{
-position:sticky;
-top:0;
-z-index:10;
-background:rgba(5,14,10,.94);
-backdrop-filter:blur(12px);
-border-bottom:1px solid var(--line)
-}
-
-.nav{
-max-width:1200px;
-margin:auto;
-padding:16px 20px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px
-}
-
-.brand{
-font-weight:900;
-letter-spacing:.5px;
-font-size:20px
-}
-
-.brand span{color:var(--accent)}
-
-nav{
-display:flex;
-gap:7px;
-flex-wrap:wrap
-}
-
-button,.tab{
-border:1px solid var(--line);
-background:var(--panel);
-color:var(--text);
-padding:10px 13px;
-border-radius:10px;
-cursor:pointer;
-font-weight:700
-}
-
-.tab.active,button.primary{
-background:var(--accent);
-color:#06110b;
-border-color:var(--accent)
-}
-
+body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(145deg,#06100c,#0a1711 55%,#07100d);color:var(--text)}
+header{position:sticky;top:0;z-index:10;background:rgba(5,14,10,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1200px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{font-weight:900;letter-spacing:.5px;font-size:20px}.brand span{color:var(--accent)}
+nav{display:flex;gap:7px;flex-wrap:wrap}
+button,.tab{border:1px solid var(--line);background:var(--panel);color:var(--text);padding:10px 13px;border-radius:10px;cursor:pointer;font-weight:700}
+.tab.active,button.primary{background:var(--accent);color:#06110b;border-color:var(--accent)}
 button:hover,.tab:hover{filter:brightness(1.12)}
-
-main{
-max-width:1200px;
-margin:auto;
-padding:24px 20px 60px
-}
-
-.hero{
-padding:30px 0 20px
-}
-
-.hero h1{
-font-size:clamp(32px,6vw,60px);
-margin:0 0 8px
-}
-
-.hero p{
-color:var(--muted);
-margin:0;
-max-width:700px
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:14px
-}
-
-.card{
-background:linear-gradient(160deg,var(--panel2),var(--panel));
-border:1px solid var(--line);
-border-radius:16px;
-padding:18px
-}
-
-.stat{
-font-size:28px;
-font-weight:900
-}
-
-.muted{
-color:var(--muted);
-font-size:13px
-}
-
-.section{margin-top:24px}
-
-.section h2{margin:0 0 13px}
-
-.table-wrap{
-overflow:auto;
-border:1px solid var(--line);
-border-radius:15px;
-background:var(--panel)
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-min-width:760px
-}
-
-th,td{
-padding:13px 10px;
-border-bottom:1px solid #1c3528;
-text-align:center;
-font-size:14px
-}
-
-th{
-background:#102118;
-color:#b8c9c0;
-position:sticky;
-top:0
-}
-
+main{max-width:1200px;margin:auto;padding:24px 20px 60px}
+.hero{padding:30px 0 20px}.hero h1{font-size:clamp(32px,6vw,60px);margin:0 0 8px}.hero p{color:var(--muted);margin:0;max-width:700px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:16px;padding:18px}
+.stat{font-size:28px;font-weight:900}.muted{color:var(--muted);font-size:13px}
+.section{margin-top:24px}.section h2{margin:0 0 13px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:15px;background:var(--panel)}
+table{width:100%;border-collapse:collapse;min-width:760px}
+th,td{padding:13px 10px;border-bottom:1px solid #1c3528;text-align:center;font-size:14px}
+th{background:#102118;color:#b8c9c0;position:sticky;top:0}
 td:first-child,th:first-child{text-align:left}
-
-.team-cell{
-display:flex;
-align-items:center;
-gap:10px
-}
-
-.logo{
-width:34px;
-height:34px;
-border-radius:50%;
-display:grid;
-place-items:center;
-font-size:11px;
-font-weight:900;
-border:2px solid rgba(255,255,255,.35);
-color:#fff;
-flex:none
-}
-
-.team-link{
-font-weight:800;
-cursor:pointer
-}
-
-.team-link:hover{color:var(--accent)}
-
-.rank{
-font-weight:900;
-color:var(--gold)
-}
-
-.controls{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-bottom:14px
-}
-
-.controls input,.controls select,.admin-grid input,.admin-row input{
-background:#09160f;
-color:var(--text);
-border:1px solid var(--line);
-padding:10px;
-border-radius:9px;
-outline:none
-}
-
+.team-cell{display:flex;align-items:center;gap:10px}
+.logo{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:900;border:2px solid rgba(255,255,255,.35);color:#fff;flex:none}
+.team-link{font-weight:800;cursor:pointer}.team-link:hover{color:var(--accent)}
+.rank{font-weight:900;color:var(--gold)}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.controls input,.controls select,.admin-grid input{background:#09160f;color:var(--text);border:1px solid var(--line);padding:10px;border-radius:9px;outline:none}
 .controls input{min-width:210px}
-
-.fixture-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px
-}
-
-.fixture{
-border:1px solid var(--line);
-background:var(--panel);
-border-radius:14px;
-padding:15px
-}
-
-.date{
-font-size:12px;
-color:var(--accent);
-font-weight:900;
-text-transform:uppercase
-}
-
-.match{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-margin-top:10px
-}
-
-.side{
-display:flex;
-align-items:center;
-gap:8px;
-font-weight:800
-}
-
-.score{
-font-size:18px;
-font-weight:900;
-white-space:nowrap
-}
-
-.status{
-color:var(--muted);
-font-size:12px;
-margin-top:7px
-}
-
-.profile{
-display:grid;
-grid-template-columns:180px 1fr;
-gap:18px
-}
-
-.profile-logo{
-width:130px;
-height:130px;
-border-radius:28px;
-display:grid;
-place-items:center;
-font-size:35px;
-font-weight:1000;
-border:3px solid rgba(255,255,255,.35)
-}
-
-.profile h2{
-margin:0 0 5px;
-font-size:30px
-}
-
-.pill{
-display:inline-block;
-border:1px solid var(--line);
-padding:5px 9px;
-border-radius:999px;
-color:var(--muted);
-margin:4px 5px 0 0;
-font-size:12px
-}
-
-.admin{display:none}
-
+.fixture-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.fixture{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:15px}
+.date{font-size:12px;color:var(--accent);font-weight:900;text-transform:uppercase}
+.match{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px}
+.side{display:flex;align-items:center;gap:8px;font-weight:800}
+.score{font-size:18px;font-weight:900;white-space:nowrap}
+.status{color:var(--muted);font-size:12px;margin-top:7px}
+.profile{display:grid;grid-template-columns:180px 1fr;gap:18px}
+.profile-logo{width:130px;height:130px;border-radius:28px;display:grid;place-items:center;font-size:35px;font-weight:1000;border:3px solid rgba(255,255,255,.35)}
+.profile h2{margin:0 0 5px;font-size:30px}
+.pill{display:inline-block;border:1px solid var(--line);padding:5px 9px;border-radius:999px;color:var(--muted);margin:4px 5px 0 0;font-size:12px}
+.admin{display:none}.admin.show{display:block}
 .login{max-width:430px}
-
-.notice{
-padding:12px;
-border:1px solid var(--line);
-border-radius:10px;
-color:var(--muted);
-font-size:13px
-}
-
-.admin-row{
-display:grid;
-grid-template-columns:1.5fr 100px 100px 100px;
-gap:8px;
-align-items:center;
-padding:10px 0;
-border-bottom:1px solid var(--line)
-}
-
-.admin-stats{
-display:grid;
-grid-template-columns:repeat(8,1fr);
-gap:7px;
-margin-top:8px
-}
-
-.admin-stats input{
-width:100%;
-min-width:0
-}
-
-footer{
-border-top:1px solid var(--line);
-padding:22px;
-text-align:center;
-color:var(--muted);
-font-size:12px
-}
-
+.notice{padding:12px;border:1px solid var(--line);border-radius:10px;color:var(--muted);font-size:13px}
+.admin-row{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr 1fr auto;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var(--muted);font-size:12px}
 @media(max-width:850px){
 .grid{grid-template-columns:repeat(2,1fr)}
 .fixture-grid{grid-template-columns:1fr}
 .profile{grid-template-columns:1fr}
-.admin-stats{grid-template-columns:repeat(4,1fr)}
 .admin-row{grid-template-columns:1fr 1fr}
 }
-
 @media(max-width:520px){
 .grid{grid-template-columns:1fr 1fr}
-.nav{
-align-items:flex-start;
-flex-direction:column
-}
+.nav{align-items:flex-start;flex-direction:column}
 main{padding:18px 12px 45px}
-.admin-stats{grid-template-columns:repeat(2,1fr)}
+.hero{padding-top:15px}
 }
 </style>
 </head>
@@ -342,7 +68,6 @@ main{padding:18px 12px 45px}
 
 <header>
 <div class="nav">
-
 <div class="brand">⚽ <span>FOOTBALL</span> LEAGUE</div>
 
 <nav>
@@ -351,14 +76,12 @@ main{padding:18px 12px 45px}
 <button class="tab" data-page="teams">Teams</button>
 <button class="tab" data-page="admin">Admin</button>
 </nav>
-
 </div>
 </header>
 
 <main>
 
 <section id="home" class="page">
-
 <div class="hero">
 <h1>Football League</h1>
 <p>Official league table, team profiles, fixtures and results for the 8-team competition.</p>
@@ -368,10 +91,8 @@ main{padding:18px 12px 45px}
 
 <div class="section">
 <h2>League Table</h2>
-
 <div class="table-wrap">
 <table>
-
 <thead>
 <tr>
 <th># Team</th>
@@ -385,31 +106,19 @@ main{padding:18px 12px 45px}
 <th>PTS</th>
 </tr>
 </thead>
-
 <tbody id="tableBody"></tbody>
-
 </table>
 </div>
 </div>
-
 </section>
 
-
 <section id="fixtures" class="page" style="display:none">
-
 <div class="hero">
-
 <h1>Fixtures & Results</h1>
-
-<p>
-One match per day, every Wednesday and Thursday,
-from 30 September to 17 December 2026.
-</p>
-
+<p>All league fixtures are scheduled on Wednesdays and Thursdays.</p>
 </div>
 
 <div class="controls">
-
 <input id="fixtureSearch" placeholder="Search team...">
 
 <select id="dateFilter">
@@ -421,49 +130,34 @@ from 30 September to 17 December 2026.
 <option value="upcoming">Upcoming</option>
 <option value="played">Played</option>
 </select>
-
 </div>
 
 <div class="fixture-grid" id="fixtureGrid"></div>
-
 </section>
 
-
 <section id="teams" class="page" style="display:none">
-
 <div class="hero">
 <h1>Teams</h1>
 <p>Tap a team to view its captain, colours and current record.</p>
 </div>
 
 <div class="grid" id="teamCards"></div>
-
 </section>
 
-
 <section id="profile" class="page" style="display:none">
-
 <button onclick="showPage('teams')">← Back to teams</button>
 
 <div class="card section" id="profileBox"></div>
-
 </section>
 
-
-<section id="admin" class="page">
+<section id="admin" class="page admin">
 
 <div class="hero">
-
 <h1>Admin Panel</h1>
-
-<p>
-Edit match scores and manually edit team statistics.
-</p>
-
+<p>Update match results. The league table recalculates automatically.</p>
 </div>
 
 <div id="loginBox" class="card login">
-
 <h3>Admin access</h3>
 
 <input
@@ -476,23 +170,18 @@ style="width:100%;margin:8px 0 10px"
 <button class="primary" onclick="login()">Unlock</button>
 
 <p id="loginMsg" class="muted"></p>
-
 </div>
-
 
 <div id="adminPanel" style="display:none">
 
 <div class="notice">
-Admin mode is active on this browser.
-Changes are saved locally in this browser.
+Admin mode is active on this browser. Enter scores and press Save.
+Results are stored locally in this browser.
 </div>
 
 <div class="section" id="adminMatches"></div>
 
-<div class="section" id="adminTeams"></div>
-
 </div>
-
 </section>
 
 </main>
@@ -501,10 +190,11 @@ Changes are saved locally in this browser.
 Football League • 8 teams • 2026 season
 </footer>
 
-
 <script>
 
-const teams=[
+const ADMIN_PASSWORD = "Football2026";
+
+const teams = [
 
 {id:1,name:'Prime FC',captain:'Orji Henry',color:'#111111',abbr:'PF'},
 
@@ -525,47 +215,682 @@ const teams=[
 ];
 
 
-// 28 matches.
-// Exactly ONE match on each Wednesday or Thursday.
-// Ends Thursday, December 17, 2026.
+// Every team plays every other team once = 28 matches.
 
-const fixtures=[
+const rounds = [
 
-['2026-09-30',1,8],
-['2026-10-01',4,5],
+[[1,8],[4,5],[2,7],[3,6]],
 
-['2026-10-07',2,7],
-['2026-10-08',3,6],
+[[1,7],[8,6],[2,5],[3,4]],
 
-['2026-10-14',1,7],
-['2026-10-15',8,6],
+[[1,6],[7,5],[8,4],[2,3]],
 
-['2026-10-21',2,5],
-['2026-10-22',3,4],
+[[1,5],[6,4],[7,3],[8,2]],
 
-['2026-10-28',1,6],
-['2026-10-29',7,5],
+[[1,4],[5,3],[6,2],[7,8]],
 
-['2026-11-04',8,4],
-['2026-11-05',2,3],
+[[1,3],[4,2],[5,8],[6,7]],
 
-['2026-11-11',1,5],
-['2026-11-12',6,4],
+[[1,2],[3,8],[4,7],[5,6]]
 
-['2026-11-18',7,3],
-['2026-11-19',8,2],
+];
 
-['2026-11-25',1,4],
-['2026-11-26',5,3],
 
-['2026-12-02',6,2],
-['2026-12-03',7,8],
+// One match per Wednesday/Thursday.
 
-['2026-12-09',1,3],
-['2026-12-10',4,2],
+const dates = [
 
-['2026-12-16',5,8],
-['2026-12-17',6,7],
+'2026-09-30',
+'2026-10-01',
+'2026-10-14',
+'2026-10-15',
+'2026-10-28',
+'2026-10-29',
+'2026-11-11',
+'2026-11-12',
+'2026-11-18',
+'2026-11-19',
+'2026-11-25',
+'2026-11-26',
+'2026-12-02',
+'2026-12-03'
 
-['2026-12-23',1,2],
-['2026-12-24',3
+];
+
+let matches = [];
+let mi = 1;
+
+rounds.forEach((r,ri)=>{
+
+r.forEach((pair,j)=>{
+
+const d = dates[ri*2+(j>1?1:0)];
+
+matches.push({
+
+id:mi++,
+round:ri+1,
+date:d,
+home:pair[0],
+away:pair[1],
+hg:null,
+ag:null
+
+});
+
+});
+
+});
+
+
+const saved =
+JSON.parse(localStorage.getItem('leagueResults') || '{}');
+
+matches.forEach(m=>{
+
+if(saved[m.id]){
+
+m.hg=saved[m.id][0];
+m.ag=saved[m.id][1];
+
+}
+
+});
+
+
+const team = id => teams.find(t=>t.id===id);
+
+const logo = (t,cls='logo') =>
+
+`<span class="${cls}"
+style="background:${t.color};color:${t.dark?'#111':'#fff'}">
+${t.abbr}
+</span>`;
+
+
+function stats(){
+
+let s = Object.fromEntries(
+
+teams.map(t=>[t.id,{
+played:0,
+w:0,
+d:0,
+l:0,
+gf:0,
+ga:0,
+pts:0
+}])
+
+);
+
+
+matches.forEach(m=>{
+
+if(m.hg===null)return;
+
+let h=s[m.home];
+let a=s[m.away];
+
+h.played++;
+a.played++;
+
+h.gf += Number(m.hg);
+h.ga += Number(m.ag);
+
+a.gf += Number(m.ag);
+a.ga += Number(m.hg);
+
+if(Number(m.hg)>Number(m.ag)){
+
+h.w++;
+h.pts+=3;
+a.l++;
+
+}
+
+else if(Number(m.hg)<Number(m.ag)){
+
+a.w++;
+a.pts+=3;
+h.l++;
+
+}
+
+else{
+
+h.d++;
+a.d++;
+
+h.pts++;
+a.pts++;
+
+}
+
+});
+
+return s;
+
+}
+
+
+function standings(){
+
+const s=stats();
+
+return teams.map(t=>({
+
+...t,
+...s[t.id],
+gd:s[t.id].gf-s[t.id].ga
+
+}))
+
+.sort((a,b)=>
+
+b.pts-a.pts ||
+b.gd-a.gd ||
+b.gf-a.gf ||
+a.name.localeCompare(b.name)
+
+);
+
+}
+
+
+function renderTable(){
+
+const rows=standings();
+
+document.getElementById('tableBody').innerHTML =
+
+rows.map((t,i)=>`
+
+<tr>
+
+<td>
+
+<div class="team-cell">
+
+<span class="rank">${i+1}</span>
+
+${logo(t)}
+
+<span class="team-link"
+onclick="openProfile(${t.id})">
+
+${t.name}
+
+</span>
+
+</div>
+
+</td>
+
+<td>${t.played}</td>
+<td>${t.w}</td>
+<td>${t.d}</td>
+<td>${t.l}</td>
+<td>${t.gf}</td>
+<td>${t.ga}</td>
+
+<td>${t.gd>0?'+':''}${t.gd}</td>
+
+<td><b>${t.pts}</b></td>
+
+</tr>
+
+`).join('');
+
+
+const played =
+matches.filter(m=>m.hg!==null).length;
+
+
+document.getElementById('stats').innerHTML = `
+
+<div class="card">
+<div class="muted">Teams</div>
+<div class="stat">8</div>
+</div>
+
+<div class="card">
+<div class="muted">Matches</div>
+<div class="stat">${matches.length}</div>
+</div>
+
+<div class="card">
+<div class="muted">Played</div>
+<div class="stat">${played}</div>
+</div>
+
+<div class="card">
+<div class="muted">Remaining</div>
+<div class="stat">${matches.length-played}</div>
+</div>
+
+`;
+
+}
+
+
+function fmt(d){
+
+return new Date(d+'T12:00:00')
+.toLocaleDateString('en-US',{
+weekday:'short',
+month:'short',
+day:'numeric',
+year:'numeric'
+});
+
+}
+
+
+function renderFixtures(){
+
+const q =
+document.getElementById('fixtureSearch')
+.value
+.toLowerCase();
+
+const df =
+document.getElementById('dateFilter').value;
+
+const sf =
+document.getElementById('statusFilter').value;
+
+
+let arr = matches.filter(m=>{
+
+const names =
+(team(m.home).name+' '+team(m.away).name)
+.toLowerCase();
+
+return (
+
+(!q || names.includes(q)) &&
+
+(!df || m.date===df) &&
+
+(!sf ||
+(
+sf==='played'
+? m.hg!==null
+: m.hg===null
+))
+
+);
+
+});
+
+
+document.getElementById('fixtureGrid').innerHTML =
+
+arr.map(m=>{
+
+const h=team(m.home);
+const a=team(m.away);
+
+const played=m.hg!==null;
+
+return `
+
+<div class="fixture">
+
+<div class="date">
+Round ${m.round} • ${fmt(m.date)}
+</div>
+
+<div class="match">
+
+<div class="side">
+${logo(h)}
+${h.name}
+</div>
+
+<div class="score">
+${played ? m.hg+' - '+m.ag : 'VS'}
+</div>
+
+<div class="side">
+${a.name}
+${logo(a)}
+</div>
+
+</div>
+
+<div class="status">
+${played?'Final result':'Scheduled'}
+</div>
+
+</div>
+
+`;
+
+}).join('')
+
+||
+
+'<div class="notice">No matches found.</div>';
+
+}
+
+
+function renderTeams(){
+
+document.getElementById('teamCards').innerHTML =
+
+teams.map(t=>{
+
+const s=stats()[t.id];
+
+return `
+
+<div class="card"
+onclick="openProfile(${t.id})"
+style="cursor:pointer">
+
+<div class="team-cell">
+
+${logo(t)}
+
+<div>
+
+<h3 style="margin:0">
+${t.name}
+</h3>
+
+<div class="muted">
+Captain: ${t.captain}
+</div>
+
+</div>
+
+</div>
+
+<div style="margin-top:12px">
+
+<span class="pill">
+PW ${s.played}
+</span>
+
+<span class="pill">
+PTS ${s.pts}
+</span>
+
+<span class="pill">
+GD ${s.gf-s.ga>=0?'+':''}${s.gf-s.ga}
+</span>
+
+</div>
+
+</div>
+
+`;
+
+}).join('');
+
+}
+
+
+function openProfile(id){
+
+const t=team(id);
+const s=stats()[id];
+
+showPage('profile');
+
+document.getElementById('profileBox').innerHTML = `
+
+<div class="profile">
+
+<div class="profile-logo"
+style="background:${t.color};
+color:${t.dark?'#111':'#fff'}">
+
+${t.abbr}
+
+</div>
+
+<div>
+
+<h2>${t.name}</h2>
+
+<div class="muted">
+Captain: ${t.captain}
+</div>
+
+<div class="pill">PW ${s.played}</div>
+<div class="pill">W ${s.w}</div>
+<div class="pill">D ${s.d}</div>
+<div class="pill">L ${s.l}</div>
+<div class="pill">GF ${s.gf}</div>
+<div class="pill">GA ${s.ga}</div>
+<div class="pill">GD ${s.gf-s.ga}</div>
+<div class="pill">PTS ${s.pts}</div>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+function renderAdmin(){
+
+document.getElementById('adminMatches').innerHTML =
+
+'<h2>Match Results</h2>' +
+
+matches.map(m=>`
+
+<div class="admin-row">
+
+<div>
+
+<b>R${m.round}</b>
+
+${team(m.home).name}
+vs
+${team(m.away).name}
+
+<div class="muted">
+${fmt(m.date)}
+</div>
+
+</div>
+
+<input
+id="h${m.id}"
+type="number"
+min="0"
+placeholder="Home"
+value="${m.hg??''}"
+>
+
+<input
+id="a${m.id}"
+type="number"
+min="0"
+placeholder="Away"
+value="${m.ag??''}"
+>
+
+<div></div>
+<div></div>
+
+<button onclick="saveResult(${m.id})">
+Save
+</button>
+
+</div>
+
+`).join('');
+
+}
+
+
+function saveResult(id){
+
+const h =
+document.getElementById('h'+id).value;
+
+const a =
+document.getElementById('a'+id).value;
+
+
+if(h==='' || a===''){
+
+alert('Enter both scores.');
+return;
+
+}
+
+
+const m =
+matches.find(x=>x.id===id);
+
+m.hg=Number(h);
+m.ag=Number(a);
+
+
+saved[id]=[m.hg,m.ag];
+
+localStorage.setItem(
+'leagueResults',
+JSON.stringify(saved)
+);
+
+
+renderAll();
+
+alert('Result saved.');
+
+}
+
+
+function login(){
+
+const password =
+document.getElementById('password').value;
+
+const msg =
+document.getElementById('loginMsg');
+
+
+if(password === ADMIN_PASSWORD){
+
+sessionStorage.setItem('admin','1');
+
+document.getElementById('loginBox')
+.style.display='none';
+
+document.getElementById('adminPanel')
+.style.display='block';
+
+msg.textContent='';
+
+renderAdmin();
+
+}
+
+else{
+
+msg.textContent='Incorrect password.';
+
+}
+
+}
+
+
+function showPage(page){
+
+document.querySelectorAll('.page')
+.forEach(x=>x.style.display='none');
+
+document.getElementById(page)
+.style.display='block';
+
+
+document.querySelectorAll('.tab')
+.forEach(b=>
+
+b.classList.toggle(
+'active',
+b.dataset.page===page
+)
+
+);
+
+
+if(
+page==='admin' &&
+sessionStorage.getItem('admin')==='1'
+){
+
+document.getElementById('loginBox')
+.style.display='none';
+
+document.getElementById('adminPanel')
+.style.display='block';
+
+renderAdmin();
+
+}
+
+}
+
+
+document.querySelectorAll('.tab')
+.forEach(b=>
+
+b.onclick=()=>showPage(b.dataset.page)
+
+);
+
+
+document.getElementById('fixtureSearch')
+.oninput=renderFixtures;
+
+document.getElementById('dateFilter')
+.onchange=renderFixtures;
+
+document.getElementById('statusFilter')
+.onchange=renderFixtures;
+
+
+function renderAll(){
+
+renderTable();
+renderFixtures();
+renderTeams();
+
+if(sessionStorage.getItem('admin')==='1')
+renderAdmin();
+
+}
+
+
+[...new Set(matches.map(m=>m.date))]
+.forEach(d=>
+
+document.getElementById('dateFilter')
+.insertAdjacentHTML(
+'beforeend',
+`<option value="${d}">
+${fmt(d)}
+</option>`
+)
+
+);
+
+
+renderAll();
+
+</script>
+
+</body>
+  </html>
